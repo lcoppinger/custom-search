@@ -1,0 +1,10 @@
+# Ignore IDE files.
+.idea/*
+.idea
+
+# Ignore Finder metadata files on Mac
+.DS_Store
+
+# ignore node_modules
+.node_modules/*
+.node_modules
