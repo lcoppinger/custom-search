@@ -127,3 +127,26 @@ body {
     font-size: 18px;
     color: #4F4F4F;
 }
+
+/* Custom search */
+
+.custom-search--launch {
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+.overlay {
+    padding-top: 80px;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: #F0F0F0;
+}
+
+.close {
+    margin-right: 100px;
+}
