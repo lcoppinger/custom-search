@@ -2,7 +2,9 @@
  * Created by 915128 on 9/20/16.
  */
 
+
 $(document).ready(function(){
+  /*
   $(".overlay").fadeOut();
   $(".search").click(function(){
     $(this).blur();
@@ -13,4 +15,9 @@ $(document).ready(function(){
   $(".close").click(function(){
     $(".overlay").fadeOut();
   });
+  */
+
+
+
+
 });

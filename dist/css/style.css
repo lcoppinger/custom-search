@@ -47,6 +47,7 @@ body {
 .tile {
     background-color: #F0F0F0;
     padding: 15px 30px;
+    height: 235px;
 }
 
 .content-title {
@@ -63,7 +64,8 @@ body {
 }
 
 .content-contents li {
-    margin: 5px 0;
+    margin: 10px 0;
+    position: relative;
 }
 
 .content-contents a {
@@ -74,11 +76,13 @@ body {
 .content-contents a:before {
     content: '';
     display: inline-block;
+    position: absolute;
     height: 12px;
     width: 12px;
     background: url(../../Images/chevron-right.svg) no-repeat center;
     background-size: contain;
-    padding-left: 20px;
+    left: -15px;
+    top: 5px;
 }
 
     /* Breadcrumb styling */
