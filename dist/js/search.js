@@ -27,7 +27,7 @@ function search_query() {
 
 $(document).ready(function(){
 
-
+/*
     $.post("http://cse.google.com/api/default/index/002543439049758568798:vdmav7qp1dw",
       {
         url: "/custom-search/PageMap.xml"
@@ -35,7 +35,7 @@ $(document).ready(function(){
       function(data, status){
         alert("Data: " + data + "\nStatus: " + status);
       });
-
+*/
 
   $(".search-button").click(function(){
     $(".result").remove();

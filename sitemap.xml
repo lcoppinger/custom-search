@@ -12,50 +12,110 @@
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/information/information_1.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">Information</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/information/information_2.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">Information</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/information/information_3.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">Information</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/information/information_4.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">Information</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/Actions/action_1.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">Action</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/Actions/action_2.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">Action</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/Actions/action_3.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">Action</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/Actions/action_4.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">Action</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/News/news_1.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">News</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/News/news_2.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">News</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/News/news_3.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">News</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
     <url>
         <loc>https://lcoppinger.github.io/custom-search/search_results/News/news_4.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="document">
+                <Attribute name="title">News</Attribute>
+            </DataObject>
+        </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
 </urlset>
