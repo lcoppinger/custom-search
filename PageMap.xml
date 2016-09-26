@@ -1,0 +1,88 @@
+<OnDemandIndex>
+    <Pages>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/information_1.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">Information</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/information_2.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">Information</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/information_3.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">Information</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/information_4.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">Information</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/action_1.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">Actions</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/action_2.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">Actions</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/action_3.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">Actions</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/action_4.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">Actions</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/news_1.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">News</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/news_2.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">News</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/news_3.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">News</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+        <Page url="https://lcoppinger.github.io/custom-search/search_results/information/news_4.html">
+            <pagemap>
+                <DataObject type="document">
+                    <Attribute name="title">News</Attribute>
+                </DataObject>
+            </pagemap>
+        </Page>
+    </Pages>
+</OnDemandIndex>

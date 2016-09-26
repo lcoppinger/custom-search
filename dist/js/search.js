@@ -21,13 +21,20 @@ function search_query() {
     console.log(data.items);
   });
 
-
-
   console.log(request);
 }
 
 
 $(document).ready(function(){
+
+
+    $.post("demo_test_post.asp",
+      {
+        url: "/custom-search/PageMap.xml"
+      },
+      function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+      });
 
 
   $(".search-button").click(function(){
