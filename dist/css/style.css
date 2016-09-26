@@ -85,7 +85,7 @@ body {
     top: 5px;
 }
 
-    /* Breadcrumb styling */
+/* Breadcrumb styling */
 
 .breadcrumb--nav {
     background-color: #F0F0F0;
@@ -153,4 +153,28 @@ body {
 
 .close {
     margin-right: 100px;
+}
+
+.search, .search-launch {
+    border: 1px solid #E0E0E0;
+    border-radius: 0;
+    color: #4F4F4F;
+}
+
+.search:focus {
+    border: 2px solid #003B6F;
+    box-shadow: none;
+}
+
+.search-button {
+    border-radius: 0;
+}
+
+.title a {
+    color: #2E2E2E;
+}
+
+.title a:hover {
+    color: #A30000;
+    text-decoration: none;
 }

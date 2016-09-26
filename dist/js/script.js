@@ -4,20 +4,18 @@
 
 
 $(document).ready(function(){
-  /*
+
   $(".overlay").fadeOut();
-  $(".search").click(function(){
+  $(".search-launch").click(function(){
     $(this).blur();
     $(".overlay").fadeIn();
-    $(".gsc-input").focus();
+    $(".search").val('').focus();
   });
 
   $(".close").click(function(){
     $(".overlay").fadeOut();
+    $(".search").val('');
+    $(".result").remove();
   });
-  */
-
-
-
 
 });
