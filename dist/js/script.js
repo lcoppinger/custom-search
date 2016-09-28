@@ -14,6 +14,7 @@ $(document).ready(function(){
 
   $(".close").click(function(){
     $(".overlay").fadeOut();
+    $("#content").fadeOut();
     $(".search").val('');
     $(".result").remove();
   });

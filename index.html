@@ -11,6 +11,8 @@
     <script src="dist/js/search.js"></script>
 
     -->
+
+
 </head>
 <body>
 <header role="banner" class="navbar navbar-fixed-top navbar-default custom--navbar">
@@ -86,15 +88,37 @@
                     <button class="btn btn-default search-button" type="button">Search</button>
                   </span>
             </div>
-        </div>
-        <div id="content">
+            <div id="content">
+                <ul class="nav nav-tabs nav-justified tabs">
+                    <li class="tab-link current" data-tab="tab-1"><a href="#" class="all">All</a></li>
+                    <li class="tab-link" data-tab="tab-2"><a href="#">News</a></li>
+                    <li class="tab-link" data-tab="tab-3"><a href="#">Actions</a></li>
+                    <li class="tab-link" data-tab="tab-4"><a href="#">Information</a></li>
+                </ul>
+                <div id="tab-1" class="tab-content current"></div>
+                <div id="tab-2" class="tab-content"></div>
+                <div id="tab-3" class="tab-content"></div>
+                <div id="tab-4" class="tab-content"></div>
+                <div class="results-navigation">
+                    <div class="previous-page">
+                        <a href="#">Previous page</a>
+                        <p class="previous">page <span class="p-number"></span> of <span class="total"></span></p>
+                    </div>
+                    <div class="next-page">
+                        <a href="#">Next page</a>
+                        <p class="next">page <span class="n-number">2</span> of <span class="total"></span></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <script src="dist/js/jquery.min.js"></script>
 <script src="dist/js/bootstrap.min.js"></script>
-<script src="dist/js/script.js"></script>
 <script src="dist/js/search.js"></script>
+<script src="dist/js/script.js"></script>
 </body>
 </html>
+
+

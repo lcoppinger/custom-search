@@ -1,53 +1,215 @@
 /**
  * Created by 915128 on 9/22/16.
  */
-function search_query() {
-  var query = $(".search").val();
-  var url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyCMGfdDaSfjqv5zYoS0mTJnOT3e9MURWkU&cx=002543439049758568798:vdmav7qp1dw&q=";
-  var http = new XMLHttpRequest();
-  var request = url+query;
 
+function search_query(index) {
+  var query = new $(".search").val();
+  var url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyCMGfdDaSfjqv5zYoS0mTJnOT3e9MURWkU&cx=002543439049758568798:vdmav7qp1dw&q=";
+  var results = "&start=" + index;
+  var request = url+query+results;
+  var news_request = url+query+"+more:pagemap:metatags-category:News"+results;
+  var actions_request = url+query+"+more:pagemap:metatags-category:Actions"+results;
+  var information_request = url+query+"+more:pagemap:metatags-category:Information"+results;
+
+  //All requests
   $.get(request, function(data){
 
-    for (var i = 0; i < data.items.length; i++) {
-      var item = data.items[i];
-      // in production code, item.htmlTitle should have the HTML entities escaped.
+    //Remove previous results
+    $(".r-1").remove();
+    $(".count").remove();
 
-      var title = "<h3 class='title'>" + "<a href='" + item.link + "'" + item.htmlTitle + "</a>" + "</h3>";
-      var snippet = "<p class='snippet'" + item.htmlSnippet + "</p>";
+    //Display search results
+    if(data.hasOwnProperty('items')){
+      for (var i = 0; i < data.items.length; i++) {
+        var item = data.items[i];
 
-      document.getElementById("content").innerHTML += "<div class='result'>" + title + snippet + "</div>";
+        var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
+        var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
+        var snippet = "<p class='snippet'" + item.htmlSnippet + "</p>";
+
+        if (item.displayLink == "digital.pwc.com") {
+          document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + link + snippet + "</div>";
+        } else {
+          document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + snippet + "</div>";
+        }
+      }
+
+      //total results count
+      var totalResults = data.searchInformation.formattedTotalResults;
+      var count = "<p class='count'>(" + totalResults + " results)</p>";
+      var totalPages = data.searchInformation.formattedTotalResults / 10;
+      totalPages = Math.round(totalPages);
+      $(".all").append(count);
+      $(".total").text(totalPages);
+
+    } else {
+      document.getElementById("tab-1").innerHTML += "<div class='noresult r-1'>No results found for " + query +"</div>"
     }
-    console.log(data.items);
+
+  });
+
+  //News category requests
+  $.get(news_request, function(data){
+
+    $(".r-2").remove();
+
+    if(data.hasOwnProperty('items')){
+      for (var i = 0; i < data.items.length; i++) {
+        var item = data.items[i];
+        // in production code, item.htmlTitle should have the HTML entities escaped.
+
+        var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
+        var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
+        var snippet = "<p class='snippet'" + item.htmlSnippet + "</p>";
+
+        if (item.displayLink == "digital.pwc.com") {
+          document.getElementById("tab-2").innerHTML += "<div class='result r-2'>" + title + link + snippet + "</div>";
+        } else {
+          document.getElementById("tab-2").innerHTML += "<div class='result r-2'>" + title + snippet + "</div>";
+        }
+      }
+    } else {
+      document.getElementById("tab-2").innerHTML += "<div class='noresult r-2'>No results found for " + query +"</div>"
+    }
+
+  });
+
+  //Actions category requests
+  $.get(actions_request, function(data){
+
+    $(".r-3").remove();
+
+    if(data.hasOwnProperty('items')){
+      for (var i = 0; i < data.items.length; i++) {
+        var item = data.items[i];
+        // in production code, item.htmlTitle should have the HTML entities escaped.
+
+        var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
+        var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
+        var snippet = "<p class='snippet'" + item.htmlSnippet + "</p>";
+
+        if (item.displayLink == "digital.pwc.com") {
+          document.getElementById("tab-3").innerHTML += "<div class='result r-3'>" + title + link + snippet + "</div>";
+        } else {
+          document.getElementById("tab-3").innerHTML += "<div class='result r-3'>" + title + snippet + "</div>";
+        }
+      }
+    } else {
+      document.getElementById("tab-3").innerHTML += "<div class='noresult r-3'>No results found for " + query +"</div>"
+    }
+
+  });
+
+  //Information category requests
+  $.get(information_request, function(data){
+
+    $(".r-4").remove();
+
+    if(data.hasOwnProperty('items')){
+      for (var i = 0; i < data.items.length; i++) {
+        var item = data.items[i];
+        // in production code, item.htmlTitle should have the HTML entities escaped.
+
+        var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
+        var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
+        var snippet = "<p class='snippet'" + item.htmlSnippet + "</p>";
+
+        if (item.displayLink == "digital.pwc.com") {
+          document.getElementById("tab-4").innerHTML += "<div class='result r-4'>" + title + link + snippet + "</div>";
+        } else {
+          document.getElementById("tab-4").innerHTML += "<div class='result r-4'>" + title + snippet + "</div>";
+        }
+      }
+    } else {
+      document.getElementById("tab-4").innerHTML += "<div class='noresult r-4'>No results found for " + query +"</div>"
+    }
+
   });
 
   console.log(request);
 }
 
-
 $(document).ready(function(){
 
-/*
-    $.post("http://cse.google.com/api/default/index/002543439049758568798:vdmav7qp1dw",
-      {
-        url: "/custom-search/PageMap.xml"
-      },
-      function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
-      });
-*/
+  var search = $(".search");
+  var page = 1;
+  var startIndex = 1;
+  var prev = $(".previous-page");
+  var next = $(".next-page");
 
-  $(".search-button").click(function(){
-    $(".result").remove();
-      search_query()
-  });
+  $("#content").fadeOut();
 
-  $('.search').keypress(function (e) {
-    if (e.which == 13) {
+  $(search).on("change paste keyup", function() {
+    if ($(search).val().length > 3){
+      startIndex = 1;
+      page = 1;
+      search_query(startIndex);
+      $("#content").fadeIn();
+    } else if ($(search).val().length == 0) {
       $(".result").remove();
-      search_query()
+      $(".noresult").remove();
+      $(".count").remove();
+      $("#content").fadeOut();
     }
   });
+
+  $(".search-button").click(function(){
+      startIndex = 1;
+      page = 1;
+      search_query(startIndex);
+      $("#content").fadeIn();
+  });
+
+  $(search).keypress(function (e) {
+    if (e.which == 13) {
+      startIndex = 1;
+      page = 1;
+      search_query(startIndex);
+      $("#content").fadeIn();
+    }
+  });
+
+  $('ul.tabs li').click(function(){
+    var tab_id = $(this).attr('data-tab');
+
+    $('ul.tabs li').removeClass('current');
+    $('.tab-content').removeClass('current');
+
+    $(this).addClass('current');
+    $("#"+tab_id).addClass('current');
+  });
+
+  $(next).click(function(){
+    page++;
+    startIndex = startIndex + 10;
+
+    if (page == 2) {
+      $(prev).show();
+    }
+    search_query(startIndex);
+
+    $(".n-number").text(page + 1);
+    $(".p-number").text(page - 1);
+  });
+
+  $(prev).click(function(){
+    page--;
+    startIndex = startIndex - 10;
+
+    if (page == 1) {
+      $(prev).hide();
+    }
+    search_query(startIndex);
+
+    $(".n-number").text(page + 1);
+    $(".p-number").text(page - 1);
+  });
+
+  if (page == 1) {
+    $(prev).hide();
+  }
+
+
 
 });
 
