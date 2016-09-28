@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
 </head>
-<body>
+<body itemscope itemtype="http://schema.org/WebPage">
 <header role="banner" class="navbar navbar-fixed-top navbar-default custom--navbar">
     <div class="container-fluid">
         <div class="header--logo">
@@ -25,6 +25,10 @@
 </header>
 <nav role="navigation" aria-label="breadcrumbs" class="breadcrumb--nav">
     <div class="container">
+        <div itemprop="breadcrumb">
+            <a href="/custom-search/index.html" itemprop="url">Home</a>
+            <a href="/custom-search/search_results/News/news_4.html" itemprop="url">Breadcrumb 1</a>
+        </div>
         <ol class="breadcrumbs">
             <li><a href="/custom-search/index.html">Home</a></li>
             <li><a href="/custom-search/search_results/News/news_4.html">Breadcrumb 1</a></li>
