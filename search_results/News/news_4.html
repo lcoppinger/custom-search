@@ -14,6 +14,30 @@
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "https://example.com/books",
+      "name": "Books",
+      "image": "http://example.com/images/icon-book.png"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "https://example.com/books/authors",
+      "name": "Authors",
+      "image": "http://example.com/images/icon-author.png"
+    }
+  }]
+}
+</script>
+
 
 </head>
 <body>
@@ -42,6 +66,51 @@
                     <span property="name">Breadcrumb 1</span>
                 </a>
                 <meta property="position" content="2" />
+            </li>
+        </ol>
+        <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope
+                itemtype="http://schema.org/ListItem">
+                <a itemscope itemtype="http://schema.org/Thing"
+                   itemprop="item" href="https://example.com/books">
+                    <span itemprop="name">Books</span>
+                    <img itemprop="image" src="http://example.com/images/icon-bookicon.png" alt="Books"/></a>
+                <meta itemprop="position" content="1" />
+            </li>
+            ›
+            <li itemprop="itemListElement" itemscope
+                itemtype="http://schema.org/ListItem">
+                <a itemscope itemtype="http://schema.org/Thing"
+                   itemprop="item" href="https://example.com/books/sciencefiction">
+                    <span itemprop="name">Science Fiction</span>
+                    <img itemprop="image" src="http://example.com/images/icon-science-fiction.png" alt="Genre: Science Fiction"/></a>
+                <meta itemprop="position" content="2" />
+            </li>
+            ›
+            <li itemprop="itemListElement" itemscope
+                itemtype="http://schema.org/ListItem">
+                <a itemscope itemtype="http://schema.org/Thing"
+                   itemprop="item" href="https://example.com/books/sciencefiction/ancillaryjustice">
+                    <span itemprop="name">Ancillary Justice</span>
+                    <img itemprop="image" src="http://example.com/images/cover-ancillary-justice.png" alt="Ancillary Justice"/></a>
+                <meta itemprop="position" content="3" />
+            </li>
+        </ol>
+        <ol vocab="http://schema.org/" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <a property="item" typeof="WebPage"
+                   href="https://example.com/literature">
+                    <span property="name">Literature</span>
+                    <img property="image" src="http://example.com/images/icon-literature.png" alt="Literature"/></a>
+                <meta property="position" content="1">
+            </li>
+            ›
+            <li property="itemListElement" typeof="ListItem">
+                <a property="item" typeof="WebPage"
+                   href="https://example.com/literature/speculativefiction">
+                    <span property="name">Speculative Fiction</span>
+                    <img property="image" src="http://example.com/images/icon-speculative-fiction.png" alt="Genre: Speculative Fiction"/></a>
+                <meta property="position" content="2">
             </li>
         </ol>
     </div>
