@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale = 1.0"/>
     <meta name="News" content="4">
     <title>Custom Search concept</title>
 
@@ -11,28 +14,6 @@
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "item": {
-      "@id": "/custom-search/index.html",
-      "name": "Home",
-    }
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "item": {
-      "@id": "/custom-search/search_results/News/news_4.html",
-      "name": "Breadcrumb1",
-      "image": "http://example.com/images/icon-author.png"
-    }
-  }]
-}
-</script>
 
 </head>
 <body>
@@ -48,23 +29,19 @@
 </header>
 <nav role="navigation" aria-label="breadcrumbs" class="breadcrumb--nav">
     <div class="container">
-        <ol itemscope itemtype="http://schema.org/BreadcrumbList">
-            <li itemprop="itemListElement" itemscope
-                itemtype="http://schema.org/ListItem">
-                <a itemscope itemtype="http://schema.org/Thing"
-                   itemprop="item" href="/custom-search/index.html">
-                    <span itemprop="name">Home</span>
+        <ol ivocab="http://schema.org/" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <a property="item" typeof="WebPage" href="/custom-search/index.html">
+                    <span property="name">Home</span>
                 </a>
-                <meta itemprop="position" content="1" />
+                <meta property="position" content="1" />
             </li>
             ›
-            <li itemprop="itemListElement" itemscope
-                itemtype="http://schema.org/ListItem">
-                <a itemscope itemtype="http://schema.org/Thing"
-                   itemprop="item" href="/custom-search/search_results/News/news_4.html">
-                    <span itemprop="name">Breadcrumb 1</span>
+            <li property="itemListElement" typeof="ListItem">
+                <a property="item" typeof="WebPage" href="/custom-search/search_results/News/news_4.html">
+                    <span property="name">Breadcrumb 1</span>
                 </a>
-                <meta itemprop="position" content="2" />
+                <meta property="position" content="2" />
             </li>
         </ol>
     </div>
