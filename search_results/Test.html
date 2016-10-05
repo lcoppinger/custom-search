@@ -8,11 +8,13 @@
     <meta name="News" content="4">
     <title>Custom Search concept</title>
 
-    <link rel="stylesheet" href="../../dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../../dist/css/style.css"/>
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../dist/css/style.css"/>
 
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+
 </head>
 <body>
 <header role="banner" class="navbar navbar-fixed-top navbar-default custom--navbar">
@@ -31,7 +33,7 @@
             <li itemprop="itemListElement" itemscope
                 itemtype="http://schema.org/ListItem">
                 <a itemscope itemtype="http://schema.org/Thing"
-                   itemprop="item" href="https://example.com/books">
+                   itemprop="item" href="/custom-search/index.html">
                     <span itemprop="name">Home</span>
                 </a>
                 <meta itemprop="position" content="1" />
@@ -40,7 +42,7 @@
             <li itemprop="itemListElement" itemscope
                 itemtype="http://schema.org/ListItem">
                 <a itemscope itemtype="http://schema.org/Thing"
-                   itemprop="item" href="https://example.com/books/sciencefiction">
+                   itemprop="item" href="#">
                     <span itemprop="name">Breadcrumb 1</span>
                 </a>
                 <meta itemprop="position" content="2" />
@@ -49,7 +51,7 @@
             <li itemprop="itemListElement" itemscope
                 itemtype="http://schema.org/ListItem">
                 <a itemscope itemtype="http://schema.org/Thing"
-                   itemprop="item" href="https://example.com/books/sciencefiction/ancillaryjustice">
+                   itemprop="item" href="#">
                     <span itemprop="name">Breadcrumb 2</span>
                 </a>
                 <meta itemprop="position" content="3" />
@@ -72,5 +74,8 @@
         </div>
     </div>
 </main>
+
+<script src="../dist/js/jquery.min.js"></script>
+<script src="../dist/js/bootstrap.min.js"></script>
 </body>
 </html>
