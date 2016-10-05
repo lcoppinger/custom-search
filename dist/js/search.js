@@ -22,16 +22,24 @@ function search_query(index) {
     if(data.hasOwnProperty('items')){
       for (var i = 0; i < data.items.length; i++) {
         var item = data.items[i];
+        var breadcrumbs = item.pagemap.thing;
+
 
         var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
         var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
-        var snippet = "<p class='snippet'" + item.htmlSnippet + "</p>";
+        var snippet = "<p class='snippet'>" + item.htmlSnippet + "</p>";
+        var path = "<ol class='path'></ol>";
 
         if (item.displayLink == "digital.pwc.com") {
-          document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + link + snippet + "</div>";
+          document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + link + snippet + path + "</div>";
         } else {
-          document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + snippet + "</div>";
+          document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + snippet + path + "</div>";
         }
+
+        $.each( breadcrumbs, function( index, value ){
+          var crumb = "<li>" + value.name + "</li>";
+          $(".path").append(crumb);
+        });
       }
 
       //total results count
