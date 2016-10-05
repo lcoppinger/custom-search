@@ -118,4 +118,22 @@
         </PageMap>
         <lastmod>2016-09-16T14:46:40+00:00</lastmod>
     </url>
+    <url>
+        <loc>https://lcoppinger.github.io/custom-search/search_results/News/breadcrumb.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="metatags">
+                <Attribute name="category" value="News">News</Attribute>
+            </DataObject>
+        </PageMap>
+        <lastmod>2016-09-16T14:46:40+00:00</lastmod>
+    </url>
+    <url>
+        <loc>https://lcoppinger.github.io/custom-search/search_results/News/breadcrumb2.html</loc>
+        <PageMap xmlns="http://www.google.com/schemas/sitemap-pagemap/1.0">
+            <DataObject type="metatags">
+                <Attribute name="category" value="News">News</Attribute>
+            </DataObject>
+        </PageMap>
+        <lastmod>2016-09-16T14:46:40+00:00</lastmod>
+    </url>
 </urlset>
