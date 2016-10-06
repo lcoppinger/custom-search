@@ -22,7 +22,6 @@ function search_query(index) {
     if(data.hasOwnProperty('items')){
       for (var i = 0; i < data.items.length; i++) {
         var item = data.items[i];
-        var breadcrumbs = item.pagemap.thing;
 
 
         var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
@@ -36,10 +35,13 @@ function search_query(index) {
           document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + snippet + path + "</div>";
         }
 
-        $.each( breadcrumbs, function( index, value ){
-          var crumb = "<li>" + value.name + "</li>";
-          $(".path").append(crumb);
-        });
+        if (item.hasOwnProperty('pagemap')) {
+          var breadcrumbs = item.pagemap.thing;
+          $.each( breadcrumbs, function( index, value ){
+            var crumb = "<li>" + value.name + "</li>";
+            $(".path").append(crumb);
+          });
+        }
       }
 
       //total results count
@@ -64,7 +66,6 @@ function search_query(index) {
     if(data.hasOwnProperty('items')){
       for (var i = 0; i < data.items.length; i++) {
         var item = data.items[i];
-        // in production code, item.htmlTitle should have the HTML entities escaped.
 
         var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
         var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
@@ -74,6 +75,14 @@ function search_query(index) {
           document.getElementById("tab-2").innerHTML += "<div class='result r-2'>" + title + link + snippet + "</div>";
         } else {
           document.getElementById("tab-2").innerHTML += "<div class='result r-2'>" + title + snippet + "</div>";
+        }
+
+        if (item.hasOwnProperty('pagemap')) {
+          var breadcrumbs = item.pagemap.thing;
+          $.each( breadcrumbs, function( index, value ){
+            var crumb = "<li>" + value.name + "</li>";
+            $(".path").append(crumb);
+          });
         }
       }
     } else {
@@ -90,7 +99,6 @@ function search_query(index) {
     if(data.hasOwnProperty('items')){
       for (var i = 0; i < data.items.length; i++) {
         var item = data.items[i];
-        // in production code, item.htmlTitle should have the HTML entities escaped.
 
         var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
         var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
@@ -101,6 +109,15 @@ function search_query(index) {
         } else {
           document.getElementById("tab-3").innerHTML += "<div class='result r-3'>" + title + snippet + "</div>";
         }
+
+        if (item.hasOwnProperty('pagemap')) {
+          var breadcrumbs = item.pagemap.thing;
+          $.each( breadcrumbs, function( index, value ){
+            var crumb = "<li>" + value.name + "</li>";
+            $(".path").append(crumb);
+          });
+        }
+
       }
     } else {
       document.getElementById("tab-3").innerHTML += "<div class='noresult r-3'>No results found for " + query +"</div>"
@@ -116,7 +133,6 @@ function search_query(index) {
     if(data.hasOwnProperty('items')){
       for (var i = 0; i < data.items.length; i++) {
         var item = data.items[i];
-        // in production code, item.htmlTitle should have the HTML entities escaped.
 
         var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
         var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
@@ -127,6 +143,15 @@ function search_query(index) {
         } else {
           document.getElementById("tab-4").innerHTML += "<div class='result r-4'>" + title + snippet + "</div>";
         }
+
+        if (item.hasOwnProperty('pagemap')) {
+          var breadcrumbs = item.pagemap.thing;
+          $.each( breadcrumbs, function( index, value ){
+            var crumb = "<li>" + value.name + "</li>";
+            $(".path").append(crumb);
+          });
+        }
+
       }
     } else {
       document.getElementById("tab-4").innerHTML += "<div class='noresult r-4'>No results found for " + query +"</div>"
