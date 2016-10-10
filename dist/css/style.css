@@ -193,17 +193,33 @@ body {
 .nav-tabs.nav-justified>li>a:hover {
     color: #A30000;
     background: none;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #ffffff;
 }
 
 .nav-tabs.nav-justified>li.current,
 .nav-tabs.nav-justified>li.current:hover,
 .nav-tabs.nav-justified>li.current:active {
     background-color: #ffffff;
+    border: none;
+    border-radius: 0;
 }
 
 .nav-tabs.nav-justified>li.current>a {
     background-color: #ffffff;
     color: #A30000;
+    border: none;
+    border-radius: 0;
+}
+
+.nav-tabs.nav-justified>li.disabled,
+.nav-tabs.nav-justified>li.disabled:hover,
+.nav-tabs.nav-justified>li.disabled:active {
+    background-color: #CCCCCC;
+}
+.nav-tabs.nav-justified>li.disabled>a {
+    color: #F0F0F0;
 }
 
 .count {

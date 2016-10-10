@@ -1,7 +1,6 @@
 /**
  * Created by 915128 on 9/22/16.
  */
-
 function search_query(index) {
   var query = new $(".search").val();
   var url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyCMGfdDaSfjqv5zYoS0mTJnOT3e9MURWkU&cx=002543439049758568798:vdmav7qp1dw&q=";
@@ -10,6 +9,7 @@ function search_query(index) {
   var news_request = url+query+"+more:pagemap:metatags-category:News"+results;
   var actions_request = url+query+"+more:pagemap:metatags-category:Actions"+results;
   var information_request = url+query+"+more:pagemap:metatags-category:Information"+results;
+
 
   //All requests
   $.get(request, function(data){
@@ -22,7 +22,6 @@ function search_query(index) {
     if(data.hasOwnProperty('items')){
       for (var i = 0; i < data.items.length; i++) {
         var item = data.items[i];
-
 
         var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
         var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
@@ -52,9 +51,44 @@ function search_query(index) {
       $(".all").append(count);
       $(".total").text(totalPages);
 
+      if (totalResults < 11 || totalResults == 0 ) {
+        $(".next-page").hide();
+      } else {
+        $(".next-page").show();
+      }
+
     } else {
       document.getElementById("tab-1").innerHTML += "<div class='noresult r-1'>No results found for " + query +"</div>"
     }
+
+    if(data.hasOwnProperty('promotions')) {
+      for (var x = 0; x < data.promotions.length; x++) {
+        var promotion = data.promotions[x];
+
+
+        var promoTitle = "<h3 class='title'>" + "<a href='" + promotion.link + "'>" + promotion.htmlTitle + "</a>" + "</h3>";
+        var promoLink = "<a href='" + promotion.link + "' target='_blank'>" + promotion.link + "</a>";
+        var promoSnippet = "<p class='snippet'>" + promotion.bodyLines[x].htmlTitle + "</p>";
+        var promoPath = "<ol class='path'></ol>";
+
+
+        if (promotion.displayLink == "digital.pwc.com") {
+          document.getElementById("tab-1").innerHTML += "<div class='result r-1 promotion'>" + promoTitle  + promoLink + promoSnippet + promoPath + "</div>";
+        } else {
+          document.getElementById("tab-1").innerHTML += "<div class='result r-1 promotion'>" + promoTitle  + promoSnippet + promoPath + "</div>";
+        }
+
+        if (promotion.hasOwnProperty('pagemap')) {
+          var promoBreadcrumbs = promotion.pagemap.thing;
+          $.each( promoBreadcrumbs, function( index, value ){
+            var crumb = "<li>" + value.name + "</li>";
+            $(".path").append(crumb);
+          });
+        }
+      }
+    }
+
+    $("#tab-1").prepend($(".promotion"));
 
   });
 
@@ -85,8 +119,11 @@ function search_query(index) {
           });
         }
       }
+
+      $(".tab2").removeClass("disabled");
     } else {
-      document.getElementById("tab-2").innerHTML += "<div class='noresult r-2'>No results found for " + query +"</div>"
+      document.getElementById("tab-2").innerHTML += "<div class='noresult r-2'>No results found for " + query +"</div>";
+      $(".tab2").addClass("disabled");
     }
 
   });
@@ -117,10 +154,11 @@ function search_query(index) {
             $(".path").append(crumb);
           });
         }
-
+        $(".tab3").removeClass("disabled");
       }
     } else {
       document.getElementById("tab-3").innerHTML += "<div class='noresult r-3'>No results found for " + query +"</div>"
+      $(".tab3").addClass("disabled");
     }
 
   });
@@ -152,9 +190,12 @@ function search_query(index) {
           });
         }
 
+        $(".tab4").removeClass("disabled");
+
       }
     } else {
-      document.getElementById("tab-4").innerHTML += "<div class='noresult r-4'>No results found for " + query +"</div>"
+      document.getElementById("tab-4").innerHTML += "<div class='noresult r-4'>No results found for " + query +"</div>";
+      $(".tab4").addClass("disabled");
     }
 
   });
@@ -202,6 +243,8 @@ $(document).ready(function(){
     }
   });
 
+
+
   $('ul.tabs li').click(function(){
     var tab_id = $(this).attr('data-tab');
 
@@ -210,6 +253,7 @@ $(document).ready(function(){
 
     $(this).addClass('current');
     $("#"+tab_id).addClass('current');
+
   });
 
   $(next).click(function(){
@@ -241,7 +285,6 @@ $(document).ready(function(){
   if (page == 1) {
     $(prev).hide();
   }
-
 
 
 });
