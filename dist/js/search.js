@@ -51,7 +51,7 @@ function search_query(index) {
             }
 
             if (item.hasOwnProperty('pagemap')) {
-              var breadcrumbs = item.pagemap.thing;
+              var breadcrumbs = item.pagemap.listitem;
               $.each( breadcrumbs, function( index, value ){
                 var crumb = "<li>" + value.name + "</li>";
                 $(".path").append(crumb);
@@ -129,7 +129,7 @@ function search_query(index) {
             }
 
             if (item.hasOwnProperty('pagemap')) {
-              var breadcrumbs = item.pagemap.thing;
+              var breadcrumbs = item.pagemap.listitem;
               $.each( breadcrumbs, function( index, value ){
                 var crumb = "<li>" + value.name + "</li>";
                 $(".path").append(crumb);
