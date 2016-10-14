@@ -9,88 +9,185 @@ function search_query(index) {
   var news_request = url+query+"+more:pagemap:metatags-category:News"+results;
   var actions_request = url+query+"+more:pagemap:metatags-category:Actions"+results;
   var information_request = url+query+"+more:pagemap:metatags-category:Information"+results;
-
+  var suggestedSpelling =  $("#search_query");
 
   //All requests
-  $.get(request, function(data){
+  $.get(request, function(data) {
 
     //Remove previous results
-    $(".r-1").remove();
-    $(".count").remove();
+        $(".r-1").remove();
+        $(".count").remove();
+        $(suggestedSpelling).empty();
 
-    //Display search results
-    if(data.hasOwnProperty('items')){
-      for (var i = 0; i < data.items.length; i++) {
-        var item = data.items[i];
+    //Spell check
+    if(data.hasOwnProperty("spelling")){
+      var spellingQuery = data.spelling.correctedQuery;
+      var correctedRequest = data.spelling.htmlCorrectedQuery;
+      var correctText = "<p>Showing results for " + correctedRequest + "</p>";
 
-        var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
-        var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
-        var snippet = "<p class='snippet'>" + item.htmlSnippet + "</p>";
-        var path = "<ol class='path'></ol>";
+      $(suggestedSpelling).append(correctText);
+      query = spellingQuery;
+      request = url+query+results;
 
-        if (item.displayLink == "digital.pwc.com") {
-          document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + link + snippet + path + "</div>";
+      $.get(request, function(data){
+
+        $(".r-1").remove();
+        $(".count").remove();
+
+        //Display search results
+        if(data.hasOwnProperty('items')){
+          for (var i = 0; i < data.items.length; i++) {
+            var item = data.items[i];
+
+            var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
+            var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
+            var snippet = "<p class='snippet'>" + item.htmlSnippet + "</p>";
+            var path = "<ol class='path'></ol>";
+
+            if (item.displayLink == "digital.pwc.com") {
+              document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + link + snippet + path + "</div>";
+            } else {
+              document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + snippet + path + "</div>";
+            }
+
+            if (item.hasOwnProperty('pagemap')) {
+              var breadcrumbs = item.pagemap.thing;
+              $.each( breadcrumbs, function( index, value ){
+                var crumb = "<li>" + value.name + "</li>";
+                $(".path").append(crumb);
+              });
+            }
+          }
+
+          //total results count
+          var totalResults = data.searchInformation.formattedTotalResults;
+          var count = "<p class='count'>(" + totalResults + " results)</p>";
+          var totalPages = data.searchInformation.formattedTotalResults / 10;
+          totalPages = Math.round(totalPages);
+          $(".all").append(count);
+          $(".total").text(totalPages);
+
+          if (totalResults < 11 || totalResults == 0 ) {
+            $(".next-page").hide();
+          } else {
+            $(".next-page").show();
+          }
+
         } else {
-          document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + snippet + path + "</div>";
+          document.getElementById("tab-1").innerHTML += "<div class='noresult r-1'>No results found for " + query +"</div>"
         }
 
-        if (item.hasOwnProperty('pagemap')) {
-          var breadcrumbs = item.pagemap.thing;
-          $.each( breadcrumbs, function( index, value ){
-            var crumb = "<li>" + value.name + "</li>";
-            $(".path").append(crumb);
-          });
+        if(data.hasOwnProperty('promotions')) {
+          for (var x = 0; x < data.promotions.length; x++) {
+            var promotion = data.promotions[x];
+
+
+            var promoTitle = "<h3 class='title'>" + "<a href='" + promotion.link + "'>" + promotion.htmlTitle + "</a>" + "</h3>";
+            var promoLink = "<a href='" + promotion.link + "' target='_blank'>" + promotion.link + "</a>";
+            var promoSnippet = "<p class='snippet'>" + promotion.bodyLines[x].htmlTitle + "</p>";
+            var promoPath = "<ol class='path'></ol>";
+
+
+            if (promotion.displayLink == "digital.pwc.com") {
+              document.getElementById("tab-1").innerHTML += "<div class='result r-1 promotion'>" + promoTitle  + promoLink + promoSnippet + promoPath + "</div>";
+            } else {
+              document.getElementById("tab-1").innerHTML += "<div class='result r-1 promotion'>" + promoTitle  + promoSnippet + promoPath + "</div>";
+            }
+
+            if (promotion.hasOwnProperty('pagemap')) {
+              var promoBreadcrumbs = promotion.pagemap.thing;
+              $.each( promoBreadcrumbs, function( index, value ){
+                var crumb = "<li>" + value.name + "</li>";
+                $(".path").append(crumb);
+              });
+            }
+          }
         }
-      }
 
-      //total results count
-      var totalResults = data.searchInformation.formattedTotalResults;
-      var count = "<p class='count'>(" + totalResults + " results)</p>";
-      var totalPages = data.searchInformation.formattedTotalResults / 10;
-      totalPages = Math.round(totalPages);
-      $(".all").append(count);
-      $(".total").text(totalPages);
-
-      if (totalResults < 11 || totalResults == 0 ) {
-        $(".next-page").hide();
-      } else {
-        $(".next-page").show();
-      }
-
+        $("#tab-1").prepend($(".promotion"));
+      });
     } else {
-      document.getElementById("tab-1").innerHTML += "<div class='noresult r-1'>No results found for " + query +"</div>"
-    }
+      $.get(request, function(data){
 
-    if(data.hasOwnProperty('promotions')) {
-      for (var x = 0; x < data.promotions.length; x++) {
-        var promotion = data.promotions[x];
+        $(".r-1").remove();
+        $(".count").remove();
 
+        //Display search results
+        if(data.hasOwnProperty('items')){
+          for (var i = 0; i < data.items.length; i++) {
+            var item = data.items[i];
 
-        var promoTitle = "<h3 class='title'>" + "<a href='" + promotion.link + "'>" + promotion.htmlTitle + "</a>" + "</h3>";
-        var promoLink = "<a href='" + promotion.link + "' target='_blank'>" + promotion.link + "</a>";
-        var promoSnippet = "<p class='snippet'>" + promotion.bodyLines[x].htmlTitle + "</p>";
-        var promoPath = "<ol class='path'></ol>";
+            var title = "<h3 class='title'>" + "<a href='" + item.link + "'>" + item.htmlTitle + "</a>" + "</h3>";
+            var link = "<a href='" + item.link + "' target='_blank'>" + item.link + "</a>";
+            var snippet = "<p class='snippet'>" + item.htmlSnippet + "</p>";
+            var path = "<ol class='path'></ol>";
 
+            if (item.displayLink == "digital.pwc.com") {
+              document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + link + snippet + path + "</div>";
+            } else {
+              document.getElementById("tab-1").innerHTML += "<div class='result r-1'>" + title + snippet + path + "</div>";
+            }
 
-        if (promotion.displayLink == "digital.pwc.com") {
-          document.getElementById("tab-1").innerHTML += "<div class='result r-1 promotion'>" + promoTitle  + promoLink + promoSnippet + promoPath + "</div>";
+            if (item.hasOwnProperty('pagemap')) {
+              var breadcrumbs = item.pagemap.thing;
+              $.each( breadcrumbs, function( index, value ){
+                var crumb = "<li>" + value.name + "</li>";
+                $(".path").append(crumb);
+              });
+            }
+          }
+
+          //total results count
+          var totalResults = data.searchInformation.formattedTotalResults;
+          var count = "<p class='count'>(" + totalResults + " results)</p>";
+          var totalPages = data.searchInformation.formattedTotalResults / 10;
+          totalPages = Math.round(totalPages);
+          $(".all").append(count);
+          $(".total").text(totalPages);
+
+          if (totalResults < 11 || totalResults == 0 ) {
+            $(".next-page").hide();
+          } else {
+            $(".next-page").show();
+          }
+
         } else {
-          document.getElementById("tab-1").innerHTML += "<div class='result r-1 promotion'>" + promoTitle  + promoSnippet + promoPath + "</div>";
+          document.getElementById("tab-1").innerHTML += "<div class='noresult r-1'>No results found for " + query +"</div>"
         }
 
-        if (promotion.hasOwnProperty('pagemap')) {
-          var promoBreadcrumbs = promotion.pagemap.thing;
-          $.each( promoBreadcrumbs, function( index, value ){
-            var crumb = "<li>" + value.name + "</li>";
-            $(".path").append(crumb);
-          });
+        if(data.hasOwnProperty('promotions')) {
+          for (var x = 0; x < data.promotions.length; x++) {
+            var promotion = data.promotions[x];
+
+
+            var promoTitle = "<h3 class='title'>" + "<a href='" + promotion.link + "'>" + promotion.htmlTitle + "</a>" + "</h3>";
+            var promoLink = "<a href='" + promotion.link + "' target='_blank'>" + promotion.link + "</a>";
+            var promoSnippet = "<p class='snippet'>" + promotion.bodyLines[x].htmlTitle + "</p>";
+            var promoPath = "<ol class='path'></ol>";
+
+
+            if (promotion.displayLink == "digital.pwc.com") {
+              document.getElementById("tab-1").innerHTML += "<div class='result r-1 promotion'>" + promoTitle  + promoLink + promoSnippet + promoPath + "</div>";
+            } else {
+              document.getElementById("tab-1").innerHTML += "<div class='result r-1 promotion'>" + promoTitle  + promoSnippet + promoPath + "</div>";
+            }
+
+            if (promotion.hasOwnProperty('pagemap')) {
+              var promoBreadcrumbs = promotion.pagemap.thing;
+              $.each( promoBreadcrumbs, function( index, value ){
+                var crumb = "<li>" + value.name + "</li>";
+                $(".path").append(crumb);
+              });
+            }
+          }
         }
-      }
+
+        $("#tab-1").prepend($(".promotion"));
+      });
     }
-
-    $("#tab-1").prepend($(".promotion"));
-
   });
+
+
 
   //News category requests
   $.get(news_request, function(data){
