@@ -3,7 +3,7 @@
  */
 function search_query(index) {
   var query = new $(".search").val();
-  var url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyCMGfdDaSfjqv5zYoS0mTJnOT3e9MURWkU&cx=002543439049758568798:vdmav7qp1dw&q=";
+  var url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyCMGfdDaSfjqv5zYoS0mTJnOT3e9MURWkU&cx=012494950844121583299:vc96jggayfi&q=";
   var results = "&start=" + index;
   var request = url+query+results;
   var news_request = url+query+"+more:pagemap:metatags-category:News"+results;
@@ -385,4 +385,3 @@ $(document).ready(function(){
 
 
 });
-
